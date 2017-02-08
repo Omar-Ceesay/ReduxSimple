@@ -14,7 +14,7 @@ const VideoDetail = (props) => {
   return(
     <div className="video-detail col-xs-8">
       <div className="embed-container">
-        <iframe src={url}></iframe>
+        <iframe src={url} allowFullScreen></iframe>
       </div>
       <div className="details">
         <div>{video.snippet.title}</div>

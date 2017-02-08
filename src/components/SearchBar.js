@@ -7,8 +7,9 @@ class SearchBar extends Component {
     this.state = {term: ''};
   }
 
-  onInputChange(e){
-    this.setState({term: e.target.value})
+  onInputChange(term){
+    this.setState({term: term});
+    this.props.onSearchTermChange(term);
   }
   render() {
     return (
@@ -16,7 +17,7 @@ class SearchBar extends Component {
           	<div className="row">
           		<div className="col-md-12">
                       <div className="input-group" id="adv-search">
-                          <input type="text" className="form-control" value= {this.state.term} onChange= {this.onInputChange.bind(this)} placeholder="Search for video" />
+                          <input value= {this.state.term} onChange= {e => this.onInputChange(e.target.value)} type="text" className="form-control" placeholder="Search for video" />
                           <div className="input-group-btn">
                               <div className="btn-group" role="group">
                                   <div className="dropdown dropdown-lg">
@@ -24,9 +25,9 @@ class SearchBar extends Component {
                                       <div className="dropdown-menu dropdown-menu-right" role="menu">
                                           <form className="form-horizontal" role="form">
                                             <div className="form-group">
-                                              <label for="filter">Filter by</label>
+                                              <label htmlFor="filter">Filter by</label>
                                               <select className="form-control">
-                                                  <option value="0" selected>All Snippets</option>
+                                                  <option value="0" defaultValue>All Snippets</option>
                                                   <option value="1">Featured</option>
                                                   <option value="2">Most popular</option>
                                                   <option value="3">Top rated</option>
@@ -34,11 +35,11 @@ class SearchBar extends Component {
                                               </select>
                                             </div>
                                             <div className="form-group">
-                                              <label for="contain">Author</label>
+                                              <label htmlFor="contain">Author</label>
                                               <input className="form-control" type="text" />
                                             </div>
                                             <div className="form-group">
-                                              <label for="contain">Contains the words</label>
+                                              <label htmlFor="contain">Contains the words</label>
                                               <input className="form-control" type="text" />
                                             </div>
                                             <button type="submit" className="btn btn-primary"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
